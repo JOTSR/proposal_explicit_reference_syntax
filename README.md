@@ -26,6 +26,18 @@ For function: sigil is mandatory in arguments declaration and for arguments call
 const delared references can't be reassigned
 let declared refenrences can be rassigned
 
+### Type casts
+
+Ok
+- &var can be cast to @var
+- &var can be cast to var
+
+Throws
+- @var can't be cast to &var
+
+Runtime decision
+- @var can be cast to var but can throws at runtime if trying to mutate
+
 ```ts
 let source
 let source2
