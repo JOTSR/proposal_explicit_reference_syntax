@@ -137,6 +137,25 @@ foo(&a) //Same behaviour as classic declaration for object and reference behavio
 foo(@b) //throws if foo try to mutate @b, prevent unexpected behaviour
 ```
 
+### Mandatory reference
+
+```ts
+function foo(&arg0, @arg1, arg3) {}
+
+let &ref0
+let @ref1
+let noRef
+
+foo(&ref0, @ref1, noRef) //ok
+foo(&ref0, &ref0, noRef) //ok, can cast &ref to @ref
+foo(&ref0, @ref1, &ref1) //ok, &ref1 source will be muted
+
+foo(noRef, @ref1, &ref1) //throws, &arg0 need to be an explicit mutable reference
+foo(@ref1, &ref0, noRef) //throws, &arg0 need to be an explicit mutable reference
+
+foo(&ref0, @ref1, @ref1) //possibly throws at runtime is arg3 is mutated
+```
+
 ### Explicit referencing
 
 ```ts
