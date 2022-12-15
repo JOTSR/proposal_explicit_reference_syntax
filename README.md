@@ -46,7 +46,7 @@ const &constRef = source
 let &letRef = source
 
 &constRef = source2 //error, can't reassign const reference
-&letRef  source2 //ok
+&letRef = source2 //ok
 ```
 
 &var can't reference a const declared primitive
